@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 
 import Navbar from "./components/Navbar";
 import Loader from "./components/Loader";
@@ -12,45 +13,41 @@ import Contact from "./components/Contact";
 import AllSkillsPage from "./pages/AllSkillsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 
-function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000); // loader duration
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  // ✅ Home page (all sections)
-  const Home = () => (
+// ✅ Home defined OUTSIDE App to prevent re-mounting on every render
+const Home = () => (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <Navbar />
-          <Hero />
-          <Skills />
-          <About />
-          <Projects />
-          <Contact />
-        </>
-      )}
+        <Navbar />
+        <Hero />
+        <Skills />
+        <About />
+        <Projects />
+        <Contact />
     </>
-  );
+);
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/skills" element={<AllSkillsPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+function App() {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 2800);
+        return () => clearTimeout(timer);
+    }, []);
+
+    return (
+        <BrowserRouter>
+            <AnimatePresence mode="wait">
+                {loading ? (
+                    <Loader key="loader" />
+                ) : (
+                    <Routes>
+                        <Route path="/"         element={<Home />}          />
+                        <Route path="/skills"   element={<AllSkillsPage />} />
+                        <Route path="/projects" element={<ProjectsPage />}  />
+                    </Routes>
+                )}
+            </AnimatePresence>
+        </BrowserRouter>
+    );
 }
 
 export default App;

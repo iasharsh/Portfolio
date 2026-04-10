@@ -18,8 +18,22 @@
   --accent: #60a5fa;
 }
 
-html, body {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
   background-color: var(--bg);
   color: var(--text);
   transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Prevent framer-motion x animations from causing overflow */
+#root {
+  overflow-x: hidden;
 }

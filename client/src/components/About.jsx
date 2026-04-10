@@ -20,12 +20,12 @@ const fadeUp = {
 };
 
 const fadeLeft = {
-    hidden: { opacity: 0, x: -40 },
+    hidden: { opacity: 0, x: -30 },
     show:   { opacity: 1, x: 0,  transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 const fadeRight = {
-    hidden: { opacity: 0, x: 40 },
+    hidden: { opacity: 0, x: 30 },
     show:   { opacity: 1, x: 0,  transition: { duration: 0.6, ease: "easeOut" } },
 };
 
@@ -36,12 +36,12 @@ const stagger = {
 
 const About = () => {
     return (
-        <section id="about" className="pt-24 pb-20 px-6 bg-[var(--bg)] min-h-screen">
+        <section id="about" className="pt-24 pb-20 px-4 sm:px-6 bg-[var(--bg)]">
             <div className="max-w-5xl mx-auto">
 
                 {/* Heading */}
                 <motion.div
-                    className="mb-14"
+                    className="mb-10 sm:mb-14"
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.3 }}
@@ -57,7 +57,7 @@ const About = () => {
                 </motion.div>
 
                 {/* Main grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 items-start">
 
                     {/* Left — photo + stats */}
                     <motion.div
@@ -67,7 +67,6 @@ const About = () => {
                         viewport={{ once: true, amount: 0.2 }}
                         variants={fadeLeft}
                     >
-                        {/* Photo */}
                         <motion.div
                             className="relative"
                             whileHover={{ scale: 1.02 }}
@@ -77,13 +76,12 @@ const About = () => {
                             <img
                                 src={profile}
                                 alt="Harsh Pandey"
-                                className="relative w-64 h-72 object-cover object-[28%_20%] scale-105 rounded-2xl border border-[var(--border)]"
+                                className="relative w-56 sm:w-64 h-64 sm:h-72 object-cover object-[28%_20%] scale-105 rounded-2xl border border-[var(--border)]"
                             />
                         </motion.div>
 
-                        {/* Stats */}
                         <motion.div
-                            className="grid grid-cols-2 gap-3 w-64"
+                            className="grid grid-cols-2 gap-3 w-56 sm:w-64"
                             variants={stagger}
                             initial="hidden"
                             whileInView="show"
@@ -105,13 +103,12 @@ const About = () => {
 
                     {/* Right — bio + details */}
                     <motion.div
-                        className="flex flex-col gap-6"
+                        className="flex flex-col gap-5 sm:gap-6"
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.1 }}
                         variants={stagger}
                     >
-
                         {/* Bio */}
                         <motion.div variants={fadeRight}>
                             <h3 className="text-xl font-bold text-[var(--text)] mb-3">Hi, I'm Harsh 👋</h3>
@@ -131,25 +128,26 @@ const About = () => {
                             <h3 className="text-xs font-semibold tracking-widest uppercase text-[var(--accent)] mb-3">
                                 Education
                             </h3>
-                            <div className="flex flex-row md:flex-col gap-6">
+                            {/* ✅ Always stacked vertically — no flex-row on mobile */}
+                            <div className="flex flex-col gap-4">
                                 {/* JSS */}
                                 <motion.div
                                     whileHover={{ x: 4 }}
                                     transition={{ type: "spring", stiffness: 300 }}
-                                    className="flex gap-3 items-start p-4 rounded-xl border border-[var(--border)] bg-[var(--card)] hover:shadow-lg transition-shadow duration-300"
+                                    className="flex gap-3 items-start p-3 sm:p-4 rounded-xl border border-[var(--border)] bg-[var(--card)] hover:shadow-lg transition-shadow duration-300"
                                 >
                                     <div className="flex-shrink-0 w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center overflow-hidden">
                                         <img src={jsslogoicon} alt="JSS Logo" className="w-full h-full object-contain" />
                                     </div>
-                                    <div className="flex flex-col gap-1">
+                                    <div className="flex flex-col gap-1 min-w-0">
                                         <a
                                             href="https://jssaten.ac.in/"
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="group flex flex-row items-center gap-1 text-sm font-semibold text-[var(--text)] hover:text-[var(--accent)] transition-colors duration-200"
+                                            className="group flex flex-row items-center gap-1 text-xs sm:text-sm font-semibold text-[var(--text)] hover:text-[var(--accent)] transition-colors duration-200"
                                         >
-                                            JSS Academy Of Technical Education • 2023 – 2027
-                                            <MdOutlineKeyboardArrowRight className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                                            <span className="truncate">JSS Academy Of Technical Education • 2023–2027</span>
+                                            <MdOutlineKeyboardArrowRight className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                                         </a>
                                         <p className="text-xs text-[var(--muted)]">B.Tech in Computer Science</p>
                                     </div>
@@ -159,20 +157,20 @@ const About = () => {
                                 <motion.div
                                     whileHover={{ x: 4 }}
                                     transition={{ type: "spring", stiffness: 300 }}
-                                    className="flex gap-3 items-start p-4 rounded-xl border border-[var(--border)] bg-[var(--card)] hover:shadow-lg transition-shadow duration-300"
+                                    className="flex gap-3 items-start p-3 sm:p-4 rounded-xl border border-[var(--border)] bg-[var(--card)] hover:shadow-lg transition-shadow duration-300"
                                 >
                                     <div className="flex-shrink-0 w-9 h-9 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center overflow-hidden">
                                         <img src={bvmlogoicon} alt="BVM Logo" className="w-full h-full object-contain" />
                                     </div>
-                                    <div className="flex flex-col gap-1">
+                                    <div className="flex flex-col gap-1 min-w-0">
                                         <a
                                             href="https://www.bvmschool.in/"
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="group flex flex-row items-center gap-1 text-sm font-semibold text-[var(--text)] hover:text-[var(--accent)] transition-colors duration-200"
+                                            className="group flex flex-row items-center gap-1 text-xs sm:text-sm font-semibold text-[var(--text)] hover:text-[var(--accent)] transition-colors duration-200"
                                         >
-                                            BVM (Bhai Parmanand Vidya Mandir) • 2021 – 2023
-                                            <MdOutlineKeyboardArrowRight className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                                            <span className="truncate">BVM (Bhai Parmanand Vidya Mandir) • 2021–2023</span>
+                                            <MdOutlineKeyboardArrowRight className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                                         </a>
                                         <p className="text-xs text-[var(--muted)]">High School - PCM with CS</p>
                                     </div>
@@ -198,13 +196,7 @@ const About = () => {
                             <h3 className="text-xs font-semibold tracking-widest uppercase text-[var(--accent)] mb-3">
                                 Currently Learning
                             </h3>
-                            <motion.div
-                                className="flex flex-wrap gap-2"
-                                variants={stagger}
-                                initial="hidden"
-                                whileInView="show"
-                                viewport={{ once: true }}
-                            >
+                            <motion.div className="flex flex-wrap gap-2" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
                                 {learning.map((item) => (
                                     <motion.span
                                         key={item}
@@ -223,13 +215,7 @@ const About = () => {
                             <h3 className="text-xs font-semibold tracking-widest uppercase text-[var(--accent)] mb-3">
                                 Hobbies & Interests
                             </h3>
-                            <motion.div
-                                className="flex flex-wrap gap-2"
-                                variants={stagger}
-                                initial="hidden"
-                                whileInView="show"
-                                viewport={{ once: true }}
-                            >
+                            <motion.div className="flex flex-wrap gap-2" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
                                 {hobbies.map((hobby) => (
                                     <motion.span
                                         key={hobby}
@@ -242,7 +228,6 @@ const About = () => {
                                 ))}
                             </motion.div>
                         </motion.div>
-
                     </motion.div>
                 </div>
             </div>

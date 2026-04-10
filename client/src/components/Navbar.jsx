@@ -3,18 +3,18 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Skills", href: "#skills" },  // ← hash for scroll
-    { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },  // ← hash for scroll
-    { label: "Contact", href: "#contact" },
+    { label: "Home",     href: "/"         },
+    { label: "Skills",   href: "#skills"   },
+    { label: "About",    href: "#about"    },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact",  href: "#contact"  },
 ];
 
 const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [active, setActive] = useState("/");
-    const [dark, setDark] = useState(() => {
+    const [scrolled,  setScrolled]  = useState(false);
+    const [menuOpen,  setMenuOpen]  = useState(false);
+    const [active,    setActive]    = useState("/");
+    const [dark,      setDark]      = useState(() => {
         const saved = localStorage.getItem("theme");
         if (saved) return saved === "dark";
         return window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -22,77 +22,54 @@ const Navbar = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-
-    const menuRef = useRef(null);
+    const menuRef     = useRef(null);
     const controlsRef = useRef(null);
-    const toggleRef = useRef(null);
+    const toggleRef   = useRef(null);
 
-    // Sync active with current route on page load / navigation
     useEffect(() => {
         if (location.pathname !== "/") {
-            // On a route page like /skills or /projects
             setActive(location.pathname);
         } else {
-            // On home — default to "/" unless a section is visible
             setActive("/");
         }
     }, [location.pathname]);
 
-    // Intersection Observer — watches sections on home page
     useEffect(() => {
         if (location.pathname !== "/") return;
-
         const sectionIds = ["about", "contact", "projects", "skills"];
-
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActive(`#${entry.target.id}`);
-                    }
+                    if (entry.isIntersecting) setActive(`#${entry.target.id}`);
                 });
             },
             { threshold: 0.4 }
         );
-
-        // Small delay to let DOM render
         const timer = setTimeout(() => {
             sectionIds.forEach((id) => {
                 const el = document.getElementById(id);
                 if (el) observer.observe(el);
             });
         }, 100);
-
-        return () => {
-            clearTimeout(timer);
-            observer.disconnect();
-        };
+        return () => { clearTimeout(timer); observer.disconnect(); };
     }, [location.pathname]);
 
-    // Reset to home when scrolled back to top
     useEffect(() => {
         if (location.pathname !== "/") return;
-        const handleScroll = () => {
-            if (window.scrollY < 100) setActive("/");
-        };
+        const handleScroll = () => { if (window.scrollY < 100) setActive("/"); };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, [location.pathname]);
 
-    // Click outside closes mobile menu
     useEffect(() => {
         const handleClickOutside = (e) => {
-            if (
-                menuRef.current &&
-                !menuRef.current.contains(e.target) &&
-                !controlsRef.current?.contains(e.target)
-            ) setMenuOpen(false);
+            if (menuRef.current && !menuRef.current.contains(e.target) && !controlsRef.current?.contains(e.target))
+                setMenuOpen(false);
         };
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    // Close menu on real scroll
     useEffect(() => {
         let lastY = window.scrollY;
         const closeOnScroll = () => {
@@ -104,21 +81,18 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", closeOnScroll);
     }, []);
 
-    // Escape key
     useEffect(() => {
         const handleKeyDown = (e) => { if (e.key === "Escape") setMenuOpen(false); };
         document.addEventListener("keydown", handleKeyDown);
         return () => document.removeEventListener("keydown", handleKeyDown);
     }, []);
 
-    // Navbar bg on scroll
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Dark mode
     useEffect(() => {
         if (dark) {
             document.documentElement.classList.add("dark");
@@ -131,7 +105,6 @@ const Navbar = () => {
 
     const handleNav = (href) => {
         setMenuOpen(false);
-
         if (href === "/") {
             setActive("/");
             navigate("/");
@@ -156,16 +129,15 @@ const Navbar = () => {
     const isActive = (href) => active === href;
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                ? "bg-[var(--card)]/80 backdrop-blur-md border-b border-[var(--border)] shadow-sm"
-                : "bg-transparent"
-            }`}>
-            <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between relative">
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            scrolled ? "bg-[var(--card)]/80 backdrop-blur-md border-b border-[var(--border)] shadow-sm" : "bg-transparent"
+        }`}>
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between relative">
 
                 {/* Logo */}
                 <button
                     onClick={() => handleNav("/")}
-                    className="text-xl font-extrabold tracking-tight text-[var(--text)] hover:opacity-70 transition"
+                    className="text-lg sm:text-xl font-extrabold tracking-tight text-[var(--text)] hover:opacity-70 transition flex-shrink-0"
                 >
                     iasharsh<span className="text-[var(--accent)]">.</span>
                 </button>
@@ -176,10 +148,11 @@ const Navbar = () => {
                         <li key={href}>
                             <button
                                 onClick={() => handleNav(href)}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${isActive(href)
+                                className={`px-3 lg:px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                                    isActive(href)
                                         ? "bg-[var(--text)] text-[var(--bg)]"
                                         : "text-[var(--muted)] hover:text-[var(--text)] hover:bg-[var(--border)]"
-                                    }`}
+                                }`}
                             >
                                 {label}
                             </button>
@@ -188,12 +161,12 @@ const Navbar = () => {
                 </ul>
 
                 {/* Desktop right */}
-                <div className="hidden md:flex items-center gap-3">
+                <div className="hidden md:flex items-center gap-2 lg:gap-3 flex-shrink-0">
                     <button
                         onClick={(e) => { e.stopPropagation(); setDark((d) => !d); }}
                         className="p-2 rounded-full border border-[var(--border)] bg-[var(--card)] hover:scale-105 transition-all duration-300"
                     >
-                        {dark ? <FaSun /> : <FaMoon />}
+                        {dark ? <FaSun size={14} /> : <FaMoon size={14} />}
                     </button>
                     <span className="hidden lg:flex items-center gap-2 text-xs text-[var(--muted)] font-medium">
                         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -203,28 +176,28 @@ const Navbar = () => {
                         href="/resume.pdf"
                         target="_blank"
                         rel="noreferrer"
-                        className="px-4 py-2 bg-[var(--text)] text-[var(--bg)] text-xs font-medium rounded-lg hover:opacity-90 active:scale-95 transition-all duration-300"
+                        className="px-3 lg:px-4 py-2 bg-[var(--text)] text-[var(--bg)] text-xs font-medium rounded-lg hover:opacity-90 active:scale-95 transition-all duration-300"
                     >
                         Resume ↗
                     </a>
                 </div>
 
                 {/* Mobile controls */}
-                <div ref={controlsRef} className="flex md:hidden items-center gap-2">
+                <div ref={controlsRef} className="flex md:hidden items-center gap-2 flex-shrink-0">
                     <button
                         ref={toggleRef}
                         onClick={(e) => { e.stopPropagation(); setDark((d) => !d); }}
                         className="p-2 rounded-full border border-[var(--border)] bg-[var(--card)] hover:scale-105 transition-all duration-300"
                     >
-                        {dark ? <FaSun /> : <FaMoon />}
+                        {dark ? <FaSun size={14} /> : <FaMoon size={14} />}
                     </button>
                     <button
                         className="flex flex-col gap-1.5 p-2 rounded-lg hover:bg-[var(--border)] transition"
                         onClick={() => setMenuOpen((o) => !o)}
                     >
-                        <span className={`block w-5 h-0.5 bg-[var(--text)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-                        <span className={`block w-5 h-0.5 bg-[var(--text)] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-                        <span className={`block w-5 h-0.5 bg-[var(--text)] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+                        <span className={`block w-5 h-0.5 bg-[var(--text)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2"    : ""}`} />
+                        <span className={`block w-5 h-0.5 bg-[var(--text)] transition-all duration-300 ${menuOpen ? "opacity-0"                   : ""}`} />
+                        <span className={`block w-5 h-0.5 bg-[var(--text)] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2"   : ""}`} />
                     </button>
                 </div>
             </div>
@@ -232,18 +205,20 @@ const Navbar = () => {
             {/* Mobile menu */}
             <div
                 ref={menuRef}
-                className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                    } bg-[var(--card)]/95 backdrop-blur-md border-b border-[var(--border)]`}
+                className={`md:hidden transition-all duration-300 overflow-hidden ${
+                    menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                } bg-[var(--card)]/95 backdrop-blur-md border-b border-[var(--border)]`}
             >
-                <ul className="flex flex-col px-6 py-4 gap-1">
+                <ul className="flex flex-col px-4 py-4 gap-1">
                     {navLinks.map(({ label, href }) => (
                         <li key={href}>
                             <button
                                 onClick={() => handleNav(href)}
-                                className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${isActive(href)
+                                className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
+                                    isActive(href)
                                         ? "bg-[var(--text)] text-[var(--bg)]"
                                         : "text-[var(--muted)] hover:bg-[var(--border)] hover:text-[var(--text)]"
-                                    }`}
+                                }`}
                             >
                                 {label}
                             </button>
