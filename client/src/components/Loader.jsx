@@ -20,7 +20,7 @@ const Loader = () => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className="fixed inset-0 z-[999] flex flex-col items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[999] flex flex-col items-center justify-center text-center overflow-hidden px-4"
       style={{ backgroundColor: "#12121f" }}
     >
       {/* Subtle grid overlay */}
@@ -50,10 +50,10 @@ const Loader = () => {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="text-5xl md:text-7xl font-extrabold tracking-widest uppercase"
+        className="text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase text-center leading-tight"
       >
-        <span className="text-gray-200">Harsh </span>
-        <span className="text-[var(--accent)]">Pandey</span>
+        <span className="block text-gray-200">Harsh</span>
+        <span className="block text-[var(--accent)]">Pandey</span>
       </motion.h1>
 
       {/* Role */}
