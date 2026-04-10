@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f8f6f1;
+  --text: #111827;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --accent: #3b82f6;
+}
+
+.dark {
+  --bg: #0f172a;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --card: #1e293b;
+  --border: #334155;
+  --accent: #60a5fa;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
