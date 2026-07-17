@@ -23,7 +23,7 @@ const allSkills = [
     { name: "HTML5", icon: <SiHtml5 />, color: "#E34F26", category: "Frontend", description: "Semantic markup for modern web pages.", level: 4.5 },
     { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6", category: "Frontend", description: "Styling and layout.", level: 4.5 },
     { name: "Node.js", icon: <SiNodedotjs />, color: "#339933", category: "Backend", description: "Server-side JavaScript runtime.", level: 2 },
-    { name: "Express.js", icon: <SiExpress />, color: "#888888", category: "Backend", description: "Minimal Node.js framework.", level: 1 },
+    { name: "Express.js", icon: <SiExpress />, color: "#888888", category: "Backend", description: "Minimal Node.js framework.", level: 2 },
     { name: "MongoDB", icon: <SiMongodb />, color: "#47A248", category: "Database", description: "NoSQL database.", level: 1.5 },
     { name: "MySQL", icon: <SiMysql />, color: "#4479A1", category: "Database", description: "Relational DB.", level: 3.5 },
     { name: "Git", icon: <SiGit />, color: "#F05032", category: "Tools", description: "Version control.", level: 4 },
