@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import { ProjectCard } from "../components/Projects";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import taskifyImg from "../assets/taskify.png";
+import portfolioImg from "../assets/portfolio.png";
 
 const allProjects = [
     {
@@ -10,18 +12,18 @@ const allProjects = [
         description: "A task management app to create, update, and delete tasks using a REST API. Built with a clean UI and plans to integrate MongoDB as a persistent backend.",
         tags: ["React", "REST API", "Node.js", "Express"],
         category: "Full Stack",
-        github: "#",
-        live: "#",
-        image: null,
+        github: "https://github.com/iasharsh/todo-list-app",
+        live: "https://todo-list-app-lovat-sigma.vercel.app/",
+        image: taskifyImg,
     },
     {
         title: "Portfolio Website",
         description: "A modern personal portfolio with dark/light mode, smooth navigation, and a clean design built with React and Tailwind CSS.",
         tags: ["React", "Tailwind CSS", "React Router"],
         category: "Frontend",
-        github: "#",
-        live: "#",
-        image: null,
+        github: "https://github.com/iasharsh/Portfolio",
+        live: "https://portfolio-zeta-eight-tvv9yo50on.vercel.app/",
+        image: portfolioImg,
     },
     {
         title: "Coming Soon",
@@ -123,7 +125,7 @@ const ProjectsPage = () => {
                     ))}
                 </motion.div>
 
-                {/* Grid with AnimatePresence for filter transitions */}
+                {/* Grid */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={active}

@@ -13,7 +13,7 @@ import Contact from "./components/Contact";
 import AllSkillsPage from "./pages/AllSkillsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 
-// ✅ Home defined OUTSIDE App to prevent re-mounting on every render
+
 const Home = () => (
     <>
         <Navbar />

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { SiGithub } from "react-icons/si";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { motion } from "framer-motion";
+import taskifyImg from "../assets/taskify.png";
+import portfolioImg from "../assets/portfolio.png";
 
 const projects = [
     {
@@ -9,18 +11,18 @@ const projects = [
         description: "A task management app to create, update, and delete tasks using a REST API. Built with a clean UI and plans to integrate MongoDB as a persistent backend.",
         tags: ["React", "REST API", "Node.js", "Express"],
         category: "Full Stack",
-        github: "#",
-        live: "#",
-        image: null,
+        github: "https://github.com/iasharsh/todo-list-app",
+        live: "https://todo-list-app-lovat-sigma.vercel.app/",
+        image: taskifyImg,
     },
     {
         title: "Portfolio Website",
         description: "A modern personal portfolio with dark/light mode, smooth navigation, and a clean design built with React and Tailwind CSS.",
         tags: ["React", "Tailwind CSS", "React Router"],
         category: "Frontend",
-        github: "#",
-        live: "#",
-        image: null,
+        github: "https://github.com/iasharsh/Portfolio",
+        live: "https://portfolio-zeta-eight-tvv9yo50on.vercel.app/",
+        image: portfolioImg,
     },
     {
         title: "Coming Soon",
@@ -60,7 +62,7 @@ export const ProjectCard = ({ title, description, tags, category, github, live, 
             className="flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] overflow-hidden hover:border-[var(--accent)] transition-colors duration-300 group"
         >
             {/* Image area */}
-            <div className="relative w-full h-44 bg-gradient-to-br from-[var(--border)] to-[var(--card)] flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-44 object-cover object-top bg-gradient-to-br from-[var(--border)] to-[var(--card)] flex items-center justify-center overflow-hidden">
                 {image ? (
                     <img
                         src={image}

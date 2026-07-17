@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { SiJavascript, SiReact, SiNodedotjs } from "react-icons/si";
+import { SiJavascript, SiReact, SiCplusplus } from "react-icons/si";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -22,9 +22,9 @@ const fadeUp = {
 };
 
 const featuredSkills = [
-    { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E", category: "Language", description: "Used for dynamic web apps and front-end interactivity.", level: 3 },
+    { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E", category: "Language", description: "Used for dynamic web apps and front-end interactivity.", level: 3.5 },
     { name: "React", icon: <SiReact />, color: "#61DAFB", category: "Frontend", description: "Builds reactive UI components efficiently.", level: 4 },
-    { name: "Node.js", icon: <SiNodedotjs />, color: "#339933", category: "Backend", description: "Server-side JavaScript runtime for scalable apps.", level: 3 },
+    { name: "C++", icon: <SiCplusplus />, color: "#00599C", category: "Language", description: "Used for high-performance applications and algorithms.", level: 4 },
 ];
 
 const categoryColors = {
@@ -36,7 +36,7 @@ const categoryColors = {
 };
 
 const StarRating = ({ level, color }) => {
-    const gradientId = `halfGrad-${color.replace("#", "")}`;  // unique per color
+    const gradientId = `halfGrad-${color.replace("#", "")}`;
 
     return (
         <div className="flex items-center gap-1">

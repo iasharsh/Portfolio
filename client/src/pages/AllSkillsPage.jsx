@@ -15,16 +15,16 @@ import { FaCss3Alt } from "react-icons/fa";
 /* ------------------ DATA ------------------ */
 
 const allSkills = [
-    { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E", category: "Language", description: "Used for dynamic web apps and front-end interactivity.", level: 3 },
-    { name: "Python", icon: <SiPython />, color: "#3776AB", category: "Language", description: "Great for automation, data science, and backend APIs.", level: 3 },
+    { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E", category: "Language", description: "Used for dynamic web apps and front-end interactivity.", level: 3.5 },
+    { name: "Python", icon: <SiPython />, color: "#3776AB", category: "Language", description: "Great for automation, data science, and backend APIs.", level: 2.5 },
     { name: "C++", icon: <SiCplusplus />, color: "#00599C", category: "Language", description: "Used for high-performance applications and algorithms.", level: 4 },
     { name: "React", icon: <SiReact />, color: "#61DAFB", category: "Frontend", description: "Builds reactive UI components efficiently.", level: 4 },
     { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#06B6D4", category: "Frontend", description: "Utility-first CSS framework.", level: 4.5 },
     { name: "HTML5", icon: <SiHtml5 />, color: "#E34F26", category: "Frontend", description: "Semantic markup for modern web pages.", level: 4.5 },
     { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6", category: "Frontend", description: "Styling and layout.", level: 4.5 },
-    { name: "Node.js", icon: <SiNodedotjs />, color: "#339933", category: "Backend", description: "Server-side JavaScript runtime.", level: 3.5 },
-    { name: "Express.js", icon: <SiExpress />, color: "#888888", category: "Backend", description: "Minimal Node.js framework.", level: 2 },
-    { name: "MongoDB", icon: <SiMongodb />, color: "#47A248", category: "Database", description: "NoSQL database.", level: 2.5 },
+    { name: "Node.js", icon: <SiNodedotjs />, color: "#339933", category: "Backend", description: "Server-side JavaScript runtime.", level: 2 },
+    { name: "Express.js", icon: <SiExpress />, color: "#888888", category: "Backend", description: "Minimal Node.js framework.", level: 1 },
+    { name: "MongoDB", icon: <SiMongodb />, color: "#47A248", category: "Database", description: "NoSQL database.", level: 1.5 },
     { name: "MySQL", icon: <SiMysql />, color: "#4479A1", category: "Database", description: "Relational DB.", level: 3.5 },
     { name: "Git", icon: <SiGit />, color: "#F05032", category: "Tools", description: "Version control.", level: 4 },
     { name: "GitHub", icon: <SiGithub />, color: "#888888", category: "Tools", description: "Code hosting.", level: 4 },

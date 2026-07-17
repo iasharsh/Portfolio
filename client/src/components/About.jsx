@@ -5,14 +5,14 @@ import bvmlogoicon from "../assets/bvmlogoicon.jpeg";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const stats = [
-    { label: "Projects Built", value: "3"   },
+    { label: "Projects Built", value: "2"   },
     { label: "Technologies",   value: "10+" },
     { label: "Graduating",     value: "2027" },
-    { label: "Cups of Coffee", value: "∞"   },
+    { label: "Karaoke Nights",  value: "∞"   },
 ];
 
 const hobbies  = ["Coding", "Gaming", "Music", "Badminton", "Exploring Tech"];
-const learning = ["React", "Node.js", "System Design"];
+const learning = ["React", "Node.js"];
 
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -59,7 +59,7 @@ const About = () => {
                 {/* Main grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 items-start">
 
-                    {/* Left — photo + stats */}
+                    {/* Left */}
                     <motion.div
                         className="flex flex-col items-center md:items-start gap-6"
                         initial="hidden"
@@ -101,7 +101,7 @@ const About = () => {
                         </motion.div>
                     </motion.div>
 
-                    {/* Right — bio + details */}
+                    {/* Right */}
                     <motion.div
                         className="flex flex-col gap-5 sm:gap-6"
                         initial="hidden"
@@ -128,7 +128,7 @@ const About = () => {
                             <h3 className="text-xs font-semibold tracking-widest uppercase text-[var(--accent)] mb-3">
                                 Education
                             </h3>
-                            {/* ✅ Always stacked vertically — no flex-row on mobile */}
+                            {/* Always stacked vertically */}
                             <div className="flex flex-col gap-4">
                                 {/* JSS */}
                                 <motion.div

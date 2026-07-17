@@ -5,187 +5,218 @@ import { MdEmail } from "react-icons/md";
 import { motion } from "framer-motion";
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    show:   { opacity: 1, y: 0  },
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0 },
 };
 
 const fadeIn = {
-    hidden: { opacity: 0 },
-    show:   { opacity: 1  },
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
 };
 
 const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
 };
 
 const Hero = () => {
-    return (
-        <section
-            id="home"
-            className="min-h-screen relative bg-transparent overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 pt-20 pb-16"
+  return (
+    <section
+      id="home"
+      className="min-h-screen relative bg-transparent overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 pt-20 pb-16"
+    >
+      {/* Glows — clipped inside section */}
+      <div className="absolute top-0 left-0 w-48 sm:w-72 h-48 sm:h-72 bg-[var(--accent)] rounded-full blur-3xl opacity-10 pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-[var(--accent)] rounded-full blur-3xl opacity-10 pointer-events-none translate-x-1/2 translate-y-1/2" />
+
+      {/* Main content */}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 flex flex-col items-center text-center max-w-2xl w-full"
+      >
+        {/* Avatar */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="relative mb-6"
+          whileHover={{ scale: 1.08 }}
         >
-            {/* Glows — clipped inside section */}
-            <div className="absolute top-0 left-0 w-48 sm:w-72 h-48 sm:h-72 bg-[var(--accent)] rounded-full blur-3xl opacity-10 pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-48 sm:w-64 h-48 sm:h-64 bg-[var(--accent)] rounded-full blur-3xl opacity-10 pointer-events-none translate-x-1/2 translate-y-1/2" />
+          <div className="absolute inset-0 rounded-full bg-[var(--accent)] blur-2xl opacity-30 scale-110" />
+          <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full ring-4 ring-[var(--card)] shadow-xl overflow-hidden">
+            <img
+              src={profile}
+              alt="Harsh Pandey"
+              className="w-full h-full object-cover object-[22%_20%] scale-125"
+            />
+          </div>
+          <span className="absolute bottom-2 right-2 w-4 h-4 sm:w-5 sm:h-5 bg-green-400 border-2 border-[var(--card)] rounded-full" />
+        </motion.div>
 
-            {/* Main content */}
-            <motion.div
-                variants={container}
-                initial="hidden"
-                animate="show"
-                className="relative z-10 flex flex-col items-center text-center max-w-2xl w-full"
+        {/* Badge */}
+        <motion.span
+          variants={fadeUp}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--muted)] text-xs font-medium shadow-sm mb-5 sm:mb-6 tracking-wide"
+        >
+          ✦ Computer Science Student
+        </motion.span>
+
+        {/* Name */}
+        <motion.h1
+          variants={fadeUp}
+          transition={{ duration: 0.6 }}
+          className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.05] text-[var(--text)] mb-4"
+        >
+          Harsh{" "}
+          <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
+            Pandey
+          </span>
+        </motion.h1>
+
+        {/* Typewriter */}
+        <motion.p
+          variants={fadeUp}
+          transition={{ duration: 0.5 }}
+          className="text-sm sm:text-base md:text-lg text-[var(--muted)] mb-4 min-h-[28px]"
+        >
+          <span className="italic">Aspiring </span>
+          <span className="font-semibold text-[var(--text)]">
+            <Typewriter
+              words={[
+                "Full Stack Developer",
+                "Frontend Developer",
+                "Backend Learner",
+              ]}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
+          </span>
+        </motion.p>
+
+        {/* Divider */}
+        <motion.div
+          variants={fadeIn}
+          transition={{ duration: 0.6 }}
+          className="w-10 h-px bg-[var(--border)] my-4 sm:my-5"
+        />
+
+        {/* Description */}
+        <motion.p
+          variants={fadeUp}
+          transition={{ duration: 0.5 }}
+          className="text-[var(--muted)] text-sm md:text-base leading-relaxed max-w-lg mb-7 sm:mb-8 px-2"
+        >
+          I build clean, functional web apps and love turning ideas into code.
+          Currently learning and{" "}
+          <span className="text-[var(--text)] font-medium">
+            open to internship opportunities
+          </span>
+          .
+        </motion.p>
+
+        {/* Buttons */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col sm:flex-row gap-3 mb-7 sm:mb-8 w-full sm:w-auto px-4 sm:px-0"
+        >
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={() =>
+              document
+                .getElementById("projects")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-[var(--text)] text-[var(--bg)] text-sm font-medium rounded-xl shadow-md w-full sm:w-auto"
+          >
+            View Projects →
+          </motion.button>
+
+          <motion.a
+            href="/Harsh_Pandey_Resume.pdf"
+            download="Harsh_Pandey_Resume.pdf"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-[var(--card)] border border-[var(--border)] text-[var(--text)] text-sm font-medium rounded-xl shadow-sm w-full sm:w-auto"
+          >
+            ⬇ Download Resume
+          </motion.a>
+        </motion.div>
+
+        {/* Socials */}
+        <motion.div
+          variants={fadeUp}
+          transition={{ duration: 0.5 }}
+          className="flex gap-2 sm:gap-3 flex-wrap justify-center px-4"
+        >
+          {[
+            {
+              label: "GitHub",
+              icon: <FaGithub />,
+              link: "https://github.com/iasharsh",
+            },
+            {
+              label: "LinkedIn",
+              icon: <FaLinkedin />,
+              link: "https://www.linkedin.com/in/harsh-pandey-5970bb278/",
+            },
+            {
+              label: "Email",
+              icon: <MdEmail />,
+              link: "mailto:iasharsh34@email.com",
+            },
+          ].map(({ label, icon, link }, i) => (
+            <motion.a
+              key={label}
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ y: -3, scale: 1.05 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 + i * 0.1, duration: 0.4 }}
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[var(--card)] border border-[var(--border)] rounded-full text-xs font-medium text-[var(--muted)] shadow-sm hover:border-[var(--text)] hover:text-[var(--text)] transition-colors duration-300"
             >
-                {/* Avatar */}
-                <motion.div
-                    variants={fadeUp}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="relative mb-6"
-                    whileHover={{ scale: 1.08 }}
-                >
-                    <div className="absolute inset-0 rounded-full bg-[var(--accent)] blur-2xl opacity-30 scale-110" />
-                    <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full ring-4 ring-[var(--card)] shadow-xl overflow-hidden">
-                        <img
-                            src={profile}
-                            alt="Harsh Pandey"
-                            className="w-full h-full object-cover object-[22%_20%] scale-125"
-                        />
-                    </div>
-                    <span className="absolute bottom-2 right-2 w-4 h-4 sm:w-5 sm:h-5 bg-green-400 border-2 border-[var(--card)] rounded-full" />
-                </motion.div>
+              <span className="text-[10px]">{icon}</span>
+              {label}
+            </motion.a>
+          ))}
+        </motion.div>
 
-                {/* Badge */}
-                <motion.span
-                    variants={fadeUp}
-                    transition={{ duration: 0.5 }}
-                    className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-[var(--border)] bg-[var(--card)] text-[var(--muted)] text-xs font-medium shadow-sm mb-5 sm:mb-6 tracking-wide"
-                >
-                    ✦ Computer Science Student
-                </motion.span>
-
-                {/* Name */}
-                <motion.h1
-                    variants={fadeUp}
-                    transition={{ duration: 0.6 }}
-                    className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.05] text-[var(--text)] mb-4"
-                >
-                    Harsh{" "}
-                    <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
-                        Pandey
-                    </span>
-                </motion.h1>
-
-                {/* Typewriter */}
-                <motion.p
-                    variants={fadeUp}
-                    transition={{ duration: 0.5 }}
-                    className="text-sm sm:text-base md:text-lg text-[var(--muted)] mb-4 min-h-[28px]"
-                >
-                    <span className="italic">Aspiring </span>
-                    <span className="font-semibold text-[var(--text)]">
-                        <Typewriter
-                            words={["Full Stack Developer", "Frontend Developer", "Backend Learner"]}
-                            loop={true}
-                            cursor
-                            cursorStyle="|"
-                            typeSpeed={70}
-                            deleteSpeed={50}
-                            delaySpeed={1500}
-                        />
-                    </span>
-                </motion.p>
-
-                {/* Divider */}
-                <motion.div
-                    variants={fadeIn}
-                    transition={{ duration: 0.6 }}
-                    className="w-10 h-px bg-[var(--border)] my-4 sm:my-5"
-                />
-
-                {/* Description */}
-                <motion.p
-                    variants={fadeUp}
-                    transition={{ duration: 0.5 }}
-                    className="text-[var(--muted)] text-sm md:text-base leading-relaxed max-w-lg mb-7 sm:mb-8 px-2"
-                >
-                    I build clean, functional web apps and love turning ideas into code.
-                    Currently learning and{" "}
-                    <span className="text-[var(--text)] font-medium">open to internship opportunities</span>.
-                </motion.p>
-
-                {/* Buttons */}
-                <motion.div
-                    variants={fadeUp}
-                    transition={{ duration: 0.5 }}
-                    className="flex flex-col sm:flex-row gap-3 mb-7 sm:mb-8 w-full sm:w-auto px-4 sm:px-0"
-                >
-                    <motion.button
-                        whileHover={{ scale: 1.04 }}
-                        whileTap={{ scale: 0.96 }}
-                        onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                        className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-[var(--text)] text-[var(--bg)] text-sm font-medium rounded-xl shadow-md w-full sm:w-auto"
-                    >
-                        View Projects →
-                    </motion.button>
-
-                    <motion.button
-                        whileHover={{ scale: 1.04 }}
-                        whileTap={{ scale: 0.96 }}
-                        className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-[var(--card)] border border-[var(--border)] text-[var(--text)] text-sm font-medium rounded-xl shadow-sm w-full sm:w-auto"
-                    >
-                        ⬇ Download Resume
-                    </motion.button>
-                </motion.div>
-
-                {/* Socials */}
-                <motion.div
-                    variants={fadeUp}
-                    transition={{ duration: 0.5 }}
-                    className="flex gap-2 sm:gap-3 flex-wrap justify-center px-4"
-                >
-                    {[
-                        { label: "GitHub",   icon: <FaGithub />,   link: "https://github.com/iasharsh" },
-                        { label: "LinkedIn", icon: <FaLinkedin />, link: "https://www.linkedin.com/in/harsh-pandey-5970bb278/" },
-                        { label: "Email",    icon: <MdEmail />,    link: "mailto:iasharsh34@email.com" },
-                    ].map(({ label, icon, link }, i) => (
-                        <motion.a
-                            key={label}
-                            href={link}
-                            target="_blank"
-                            rel="noreferrer"
-                            whileHover={{ y: -3, scale: 1.05 }}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.8 + i * 0.1, duration: 0.4 }}
-                            className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[var(--card)] border border-[var(--border)] rounded-full text-xs font-medium text-[var(--muted)] shadow-sm hover:border-[var(--text)] hover:text-[var(--text)] transition-colors duration-300"
-                        >
-                            <span className="text-[10px]">{icon}</span>
-                            {label}
-                        </motion.a>
-                    ))}
-                </motion.div>
-
-                {/* Scroll hint */}
-                <motion.button
-                    onClick={() => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" })}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2, duration: 0.6 }}
-                    className="flex flex-col items-center mt-12 sm:mt-14 cursor-pointer"
-                >
-                    <span className="text-[10px] tracking-widest uppercase text-[var(--muted)] mb-1">Scroll</span>
-                    <motion.span
-                        animate={{ y: [0, 6, 0] }}
-                        transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
-                        className="text-xl text-[var(--muted)]"
-                    >
-                        <FaArrowDown />
-                    </motion.span>
-                    <div className="w-px h-8 bg-gradient-to-b from-[var(--border)] to-transparent mt-2" />
-                </motion.button>
-            </motion.div>
-        </section>
-    );
+        {/* Scroll hint */}
+        <motion.button
+          onClick={() =>
+            document
+              .getElementById("skills")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="flex flex-col items-center mt-12 sm:mt-14 cursor-pointer"
+        >
+          <span className="text-[10px] tracking-widest uppercase text-[var(--muted)] mb-1">
+            Scroll
+          </span>
+          <motion.span
+            animate={{ y: [0, 6, 0] }}
+            transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+            className="text-xl text-[var(--muted)]"
+          >
+            <FaArrowDown />
+          </motion.span>
+          <div className="w-px h-8 bg-gradient-to-b from-[var(--border)] to-transparent mt-2" />
+        </motion.button>
+      </motion.div>
+    </section>
+  );
 };
 
 export default Hero;

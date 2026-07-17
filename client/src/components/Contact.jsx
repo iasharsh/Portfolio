@@ -36,15 +36,36 @@ const stagger = {
 const Contact = () => {
     const [form, setForm] = useState({ name: "", email: "", message: "" });
     const [sent, setSent] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [error, setError] = useState(false);
 
     const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form submitted:", form);
-        setSent(true);
-        setForm({ name: "", email: "", message: "" });
-        setTimeout(() => setSent(false), 4000);
+        setSending(true);
+        setError(false);
+
+        try {
+            const res = await fetch("https://formspree.io/f/mlgqjjnp", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: JSON.stringify(form),
+            });
+
+            if (res.ok) {
+                setSent(true);
+                setForm({ name: "", email: "", message: "" });
+                setTimeout(() => setSent(false), 4000);
+            } else {
+                setError(true);
+            }
+        } catch (err) {
+            console.error("Failed to send:", err);
+            setError(true);
+        } finally {
+            setSending(false);
+        }
     };
 
     return (
@@ -112,16 +133,22 @@ const Contact = () => {
                         </motion.div>
                         <motion.button
                             type="submit"
+                            disabled={sending}
                             variants={fadeUp}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.97 }}
-                            className="w-full px-6 py-3.5 bg-[var(--text)] text-[var(--bg)] text-sm font-semibold rounded-xl hover:opacity-90 transition-all duration-200"
+                            className="w-full px-6 py-3.5 bg-[var(--text)] text-[var(--bg)] text-sm font-semibold rounded-xl hover:opacity-90 transition-all duration-200 disabled:opacity-60"
                         >
-                            {sent ? "✓ Message Sent!" : "Send Message →"}
+                            {sending ? "Sending..." : sent ? "✓ Message Sent!" : "Send Message →"}
                         </motion.button>
+                        {error && (
+                            <p className="text-xs text-red-400 text-center -mt-2">
+                                Something went wrong. Please try again or email me directly.
+                            </p>
+                        )}
                     </motion.form>
 
-                    {/* Right — cards + socials */}
+                    {/* Right */}
                     <motion.div
                         className="flex flex-col gap-6"
                         initial="hidden"
