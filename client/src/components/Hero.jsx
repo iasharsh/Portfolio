@@ -140,8 +140,8 @@ const Hero = () => {
           </motion.button>
 
           <motion.a
-            href="/Harsh_Pandey_Resume.pdf"
-            download="Harsh_Pandey_Resume.pdf"
+            href="/Harsh_Pandey_Frontend_Resume.pdf"
+            download="Harsh_Pandey_Frontend_Resume.pdf"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-[var(--card)] border border-[var(--border)] text-[var(--text)] text-sm font-medium rounded-xl shadow-sm w-full sm:w-auto"
