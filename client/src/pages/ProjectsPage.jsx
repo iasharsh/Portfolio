@@ -3,38 +3,7 @@ import Navbar from "../components/Navbar";
 import { ProjectCard } from "../components/Projects";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import taskifyImg from "../assets/taskify.png";
-import portfolioImg from "../assets/portfolio.png";
-
-const allProjects = [
-    {
-        title: "Taskify",
-        description: "A task management app to create, update, and delete tasks using a REST API. Built with a clean UI and plans to integrate MongoDB as a persistent backend.",
-        tags: ["React", "REST API", "Node.js", "Express"],
-        category: "Full Stack",
-        github: "https://github.com/iasharsh/todo-list-app",
-        live: "https://todo-list-app-lovat-sigma.vercel.app/",
-        image: taskifyImg,
-    },
-    {
-        title: "Portfolio Website",
-        description: "A modern personal portfolio with dark/light mode, smooth navigation, and a clean design built with React and Tailwind CSS.",
-        tags: ["React", "Tailwind CSS", "React Router"],
-        category: "Frontend",
-        github: "https://github.com/iasharsh/Portfolio",
-        live: "https://portfolio-zeta-eight-tvv9yo50on.vercel.app/",
-        image: portfolioImg,
-    },
-    {
-        title: "Coming Soon",
-        description: "Another project is in the works. Stay tuned for something exciting built with the MERN stack.",
-        tags: ["MongoDB", "Express", "React", "Node.js"],
-        category: "Full Stack",
-        github: "#",
-        live: "#",
-        image: null,
-    },
-];
+import { allProjects } from "../data/projects";
 
 const tabs = ["All", "Full Stack", "Frontend", "Backend"];
 
@@ -114,7 +83,7 @@ const ProjectsPage = () => {
                             onClick={() => setActive(tab)}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200 ${
+                            className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200 cursor-pointer ${
                                 active === tab
                                     ? "bg-[var(--text)] text-[var(--bg)] border-[var(--text)]"
                                     : "border-[var(--border)] text-[var(--muted)] hover:text-[var(--text)] hover:border-[var(--text)] bg-transparent"
@@ -129,7 +98,7 @@ const ProjectsPage = () => {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={active}
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6"
                         variants={stagger}
                         initial="hidden"
                         animate="show"

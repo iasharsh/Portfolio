@@ -139,16 +139,16 @@ const Navbar = () => {
                     onClick={() => handleNav("/")}
                     className="text-lg sm:text-xl font-extrabold tracking-tight text-[var(--text)] hover:opacity-70 transition flex-shrink-0"
                 >
-                    iasharsh<span className="text-[var(--accent)]">.</span>
+                    iasharsh<span className="text-[var(--accent)] text-blue-500">.</span>
                 </button>
 
                 {/* Desktop links */}
-                <ul className="hidden md:flex items-center gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <ul className="hidden md:flex items-center gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ">
                     {navLinks.map(({ label, href }) => (
                         <li key={href}>
                             <button
                                 onClick={() => handleNav(href)}
-                                className={`px-3 lg:px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                                className={`px-3 lg:px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer ${
                                     isActive(href)
                                         ? "bg-[var(--text)] text-[var(--bg)]"
                                         : "text-[var(--muted)] hover:text-[var(--text)] hover:bg-[var(--border)]"

@@ -24,15 +24,6 @@ const projects = [
         live: "https://portfolio-zeta-eight-tvv9yo50on.vercel.app/",
         image: portfolioImg,
     },
-    {
-        title: "Coming Soon",
-        description: "Another project is in the works. Stay tuned for something exciting built with the MERN stack.",
-        tags: ["MongoDB", "Express", "React", "Node.js"],
-        category: "Full Stack",
-        github: "#",
-        live: "#",
-        image: null,
-    },
 ];
 
 const categoryColors = {
@@ -59,10 +50,10 @@ export const ProjectCard = ({ title, description, tags, category, github, live, 
             variants={fadeUp}
             whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] overflow-hidden hover:border-[var(--accent)] transition-colors duration-300 group"
+            className="flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] overflow-hidden hover:border-[var(--accent)] transition-colors duration-300 group h-full"
         >
             {/* Image area */}
-            <div className="relative w-full h-44 object-cover object-top bg-gradient-to-br from-[var(--border)] to-[var(--card)] flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-70 object-cover object-top bg-gradient-to-br from-[var(--border)] to-[var(--card)] flex items-center justify-center overflow-hidden">
                 {image ? (
                     <img
                         src={image}

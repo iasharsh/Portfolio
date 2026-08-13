@@ -21,7 +21,7 @@ const Loader = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
       className="fixed inset-0 z-[999] flex flex-col items-center justify-center text-center overflow-hidden px-4"
-      style={{ backgroundColor: "#12121f" }}
+      style={{ backgroundColor: "#111111" }}
     >
       {/* Subtle grid overlay */}
       <div

@@ -22,7 +22,7 @@ const fadeUp = {
 };
 
 const featuredSkills = [
-    { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E", category: "Language", description: "Used for dynamic web apps and front-end interactivity.", level: 3.5 },
+    { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E", category: "Language", description: "Used for dynamic web apps and front-end interactivity.", level: 4 },
     { name: "React", icon: <SiReact />, color: "#61DAFB", category: "Frontend", description: "Builds reactive UI components efficiently.", level: 4 },
     { name: "C++", icon: <SiCplusplus />, color: "#00599C", category: "Language", description: "Used for high-performance applications and algorithms.", level: 4 },
 ];
