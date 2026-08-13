@@ -28,11 +28,26 @@ const featuredSkills = [
 ];
 
 const categoryColors = {
-    Language: { bg: "bg-purple-100 dark:bg-purple-900/30", text: "text-purple-600 dark:text-purple-400" },
-    Frontend: { bg: "bg-blue-100 dark:bg-blue-900/30", text: "text-blue-600 dark:text-blue-400" },
-    Backend: { bg: "bg-green-100 dark:bg-green-900/30", text: "text-green-600 dark:text-green-400" },
-    Database: { bg: "bg-yellow-100 dark:bg-yellow-900/30", text: "text-yellow-600 dark:text-yellow-400" },
-    Tools: { bg: "bg-rose-100 dark:bg-rose-900/30", text: "text-rose-600 dark:text-rose-400" },
+  Language: {
+    bg: "bg-purple-500/10",
+    text: "text-purple-400",
+  },
+  Frontend: {
+    bg: "bg-blue-500/10",
+    text: "text-blue-400",
+  },
+  Backend: {
+    bg: "bg-green-500/10",
+    text: "text-green-400",
+  },
+  Database: {
+    bg: "bg-yellow-500/10",
+    text: "text-yellow-400",
+  },
+  Tools: {
+    bg: "bg-rose-500/10",
+    text: "text-rose-400",
+  },
 };
 
 const StarRating = ({ level, color }) => {
