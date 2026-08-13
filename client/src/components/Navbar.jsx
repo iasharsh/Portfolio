@@ -173,7 +173,7 @@ const Navbar = () => {
                         Open to work
                     </span>
                     <a
-                        href="/Harsh_Pandey_Frontend_Resume.pdf"
+                        href="/Harsh_Pandey_Resume.pdf"
                         target="_blank"
                         rel="noreferrer"
                         className="px-3 lg:px-4 py-2 bg-[var(--text)] text-[var(--bg)] text-xs font-medium rounded-lg hover:opacity-90 active:scale-95 transition-all duration-300"
