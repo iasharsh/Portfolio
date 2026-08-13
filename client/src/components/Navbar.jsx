@@ -164,7 +164,7 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-2 lg:gap-3 flex-shrink-0">
                     <button
                         onClick={(e) => { e.stopPropagation(); setDark((d) => !d); }}
-                        className="p-2 rounded-full border border-[var(--border)] bg-[var(--card)] hover:scale-105 transition-all duration-300"
+                        className="p-2 rounded-full border border-[var(--border)] bg-[var(--card)] hover:scale-105 transition-all duration-300 cursor-pointer"
                     >
                         {dark ? <FaSun size={14} /> : <FaMoon size={14} />}
                     </button>
