@@ -12,7 +12,7 @@ const stats = [
 ];
 
 const hobbies  = ["Coding", "Gaming", "Music", "Badminton", "Exploring Tech"];
-const learning = ["React", "Node.js"];
+const learning = ["TypeScript", "Redux Toolkit", "Node.js"];
 
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
