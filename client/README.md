@@ -1,16 +1,62 @@
-# React + Vite
+# Harsh Pandey — Portfolio 🌐
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website showcasing my projects, skills, and resume, built as a full-stack React + Express application.
 
-Currently, two official plugins are available:
+**Live Demo:** https://portfolio-zeta-eight-tvv9yo50on.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- 🎬 **Animated Hero Section** — rotating role titles using `react-simple-typewriter`
+- 💼 **Projects Showcase** — filterable project listing (`ProjectsPage`) with individual project cards
+- 🧠 **Skills Section** — dedicated page listing technical skills (`AllSkillsPage`)
+- 📩 **Contact Form** — backend-connected contact form (Express + Axios + CORS)
+- 📄 **Resume Download** — downloadable PDF resume
+- 🔔 **Toast Notifications** — feedback via `react-toastify`
+- 🎨 **Responsive Design**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+**Frontend**
+- React 19 + Vite
+- React Simple Typewriter (animated hero text)
+- React Toastify
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Backend**
+- Node.js + Express
+- MongoDB (via Mongoose)
+- CORS + Axios for client-server communication
+
+## Project Structure
+
+```
+client/
+├── src/
+│   ├── components/    # Hero, About, Skills, Projects, Contact, Navbar, Loader
+│   ├── pages/          # ProjectsPage, AllSkillsPage
+│   ├── data/            # projects.js — project metadata (title, tags, links, images)
+│   ├── assets/
+│   └── App.jsx
+└── public/
+    └── resume PDFs, favicon
+```
+
+## Getting Started
+
+```bash
+git clone https://github.com/iasharsh/Portfolio.git
+cd Portfolio/client
+npm install
+npm run dev
+```
+
+*(If running the backend locally, set up a `.env` with your MongoDB connection string and run the server from the project root.)*
+
+## Featured Projects Linked From This Site
+
+- **SkyMart** — e-commerce app with Context API, cart/wishlist, and a 3D product viewer
+- **Taskify** — drag-and-drop Kanban task board built with `dnd-kit`
+
+## Possible Improvements
+
+- Add a blog/writing section
+- Add unit tests for the contact form submission flow
